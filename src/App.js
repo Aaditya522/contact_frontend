@@ -5,6 +5,7 @@ const BASE_URL = "https://contact-backend-y1pe.onrender.com/api/contacts";
 
 function App() {
   const [contacts, setContacts] = useState([]);
+  const [search, setSearch] = useState("");
   const [form, setForm] = useState({
     name: "",
     email: "",
