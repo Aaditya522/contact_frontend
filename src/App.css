@@ -1,3 +1,4 @@
+/* --- Global Resets & Typography --- */
 * {
   margin: 0;
   padding: 0;
@@ -8,14 +9,16 @@
 body {
   background-color: #f8fafc;
   color: #1e293b;
+  line-height: 1.5;
 }
 
 .container {
-  max-width: 1000px;
+  max-width: 800px; /* Narrowed for a better vertical list feel */
   margin: 60px auto;
   padding: 0 20px;
 }
 
+/* --- Header --- */
 .header {
   text-align: center;
   margin-bottom: 40px;
@@ -25,20 +28,23 @@ body {
   font-size: 2.5rem;
   font-weight: 800;
   color: #0f172a;
+  letter-spacing: -0.025em;
 }
 
 .subtitle {
   color: #64748b;
   margin-top: 8px;
+  font-size: 1.1rem;
 }
 
+/* --- Form Card (Add Contact) --- */
 .form-card {
   background: #ffffff;
-  max-width: 450px;
+  max-width: 500px;
   margin: 0 auto 50px auto;
   padding: 32px;
   border-radius: 16px;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
   border: 1px solid #e2e8f0;
 }
 
@@ -55,10 +61,11 @@ body {
 }
 
 .form-group label {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #475569;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #64748b;
   text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .form-group input {
@@ -68,10 +75,12 @@ body {
   font-size: 1rem;
   outline: none;
   background-color: #fcfcfc;
+  transition: all 0.2s;
 }
 
 .form-group input:focus {
   border-color: #3b82f6;
+  background-color: #fff;
   box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
 }
 
@@ -82,11 +91,18 @@ body {
   background: #2563eb;
   color: white;
   font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.2s, transform 0.1s;
 }
 
-.submit-btn:hover { background: #1d4ed8; }
+.submit-btn:hover {
+  background: #1d4ed8;
+}
+
+.submit-btn:active {
+  transform: scale(0.98);
+}
 
 .divider {
   border: 0;
@@ -95,71 +111,31 @@ body {
   margin-bottom: 40px;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 24px;
-}
-
-.card {
-  background: #fff;
-  padding: 24px;
-  border-radius: 12px;
-  border: 1px solid #e2e8f0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.card-info h3 { color: #0f172a; margin-bottom: 12px; }
-.card-info p { font-size: 0.95rem; color: #64748b; margin-bottom: 6px; }
-
-.actions {
-  margin-top: 20px;
-  display: flex;
-  gap: 12px;
-}
-
-.actions button {
-  flex: 1;
-  border: none;
-  padding: 10px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-.edit { background: #f1f5f9; color: #475569; }
-.delete { background: #fee2e2; color: #dc2626; }
-
-
+/* --- Search Box --- */
 .search-box {
   display: flex;
   gap: 12px;
-  max-width: 600px;
-  margin: 0 auto 40px auto;
+  margin-bottom: 32px;
   background: #ffffff;
   padding: 8px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
 .search-box input {
   flex: 1;
-  padding: 12px 16px;
+  padding: 10px 16px;
   border: 1.5px solid transparent;
-  background-color: #f8fafc;
+  background-color: #f1f5f9;
   border-radius: 8px;
   font-size: 0.95rem;
   outline: none;
-  transition: all 0.2s;
 }
 
 .search-box input:focus {
   background-color: #fff;
   border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 .search-box button {
@@ -176,31 +152,109 @@ body {
   color: white;
 }
 
-.search-box button:first-of-type:hover {
-  background-color: #1e293b;
-  transform: translateY(-1px);
-}
-
 .search-box button:last-of-type {
   background-color: #f1f5f9;
   color: #64748b;
-  border: 1px solid #e2e8f0;
 }
 
-.search-box button:last-of-type:hover {
-  background-color: #e2e8f0;
+.search-box button:hover {
+  opacity: 0.9;
+}
+
+/* --- Vertical List Layout --- */
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card {
+  background: #fff;
+  padding: 16px 24px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.card-info h3 {
+  color: #0f172a;
+  font-size: 1.1rem;
+  margin-bottom: 2px;
+}
+
+.card-info p {
+  font-size: 0.875rem;
+  color: #64748b;
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.actions button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.edit {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.edit:hover {
+  background: #e2e8f0;
   color: #1e293b;
 }
 
-@media (max-width: 600px) {
+.delete {
+  background: #fff1f2;
+  color: #e11d48;
+}
+
+.delete:hover {
+  background: #ffe4e6;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 640px) {
+  .card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .actions {
+    width: 100%;
+  }
+
+  .actions button {
+    flex: 1;
+  }
+
   .search-box {
     flex-direction: column;
     background: transparent;
-    box-shadow: none;
     border: none;
+    box-shadow: none;
     padding: 0;
   }
-  
+
   .search-box input {
     border: 1.5px solid #e2e8f0;
     background: white;
