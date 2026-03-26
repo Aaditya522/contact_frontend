@@ -83,6 +83,18 @@ function App() {
     } catch (err) {
       console.error("Error updating contact:", err);
     }
+
+
+  };
+
+  const searchContacts = async () => {
+    try {
+      const res = await fetch(`${BASE_URL}/search?query=${search}`);
+      const data = await res.json();
+      setContacts(data);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -113,7 +125,14 @@ function App() {
         </form>
       </div>
 
+
       <hr className="divider" />
+
+      <div className="search-box">
+        <input type="text" placeholder="Search by phone or email" value={search} onChange={(e) => setSearch(e.target.value)}/>
+        <button onClick={searchContacts}>Search</button>
+        <button onClick={fetchContacts}>Reset</button>
+      </div>
 
       <div className="grid">
         {contacts.map((c) => (
